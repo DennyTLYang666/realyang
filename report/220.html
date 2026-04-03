@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大興路21號 物件分析報告</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a1a; background: #f7f6f2; padding: 2rem; }
+.page { max-width: 780px; margin: 0 auto; }
+h1 { font-size: 20px; font-weight: 500; margin-bottom: 1.5rem; color: #1a1a1a; }
+.section-title { font-size: 12px; font-weight: 500; color: #888; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; margin-top: 2rem; }
+.section-title:first-child { margin-top: 0; }
+.card { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px; }
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.metric { background: #f7f6f2; border-radius: 8px; padding: 0.75rem 1rem; }
+.metric-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+.metric-value { font-size: 20px; font-weight: 500; }
+.metric-unit { font-size: 13px; color: #888; margin-left: 3px; }
+.tag { display: inline-block; font-size: 12px; padding: 3px 10px; border-radius: 8px; margin: 3px 3px 3px 0; }
+.tag-green { background: #EAF3DE; color: #3B6D11; }
+.tag-amber { background: #FAEEDA; color: #854F0B; }
+.tag-blue { background: #E6F1FB; color: #185FA5; }
+.divider { border: none; border-top: 0.5px solid rgba(0,0,0,0.1); margin: 1rem 0; }
+.price-bar-wrap { margin: 12px 0; }
+.bar-label { font-size: 13px; color: #666; margin-bottom: 5px; display: flex; justify-content: space-between; }
+.bar-bg { background: #f0efe8; border-radius: 4px; height: 10px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.strategy-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08); align-items: flex-start; }
+.strategy-item:last-child { border-bottom: none; }
+.strategy-num { width: 24px; height: 24px; border-radius: 50%; background: #E6F1FB; color: #185FA5; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.strategy-title { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+.strategy-desc { font-size: 13px; color: #666; line-height: 1.6; }
+.highlight-box { border-left: 3px solid #378ADD; padding: 10px 14px; background: #f7f6f2; border-radius: 0 8px 8px 0; margin: 8px 0; }
+.highlight-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+.highlight-desc { font-size: 13px; color: #666; line-height: 1.6; }
+.price-zone { border: 0.5px solid rgba(0,0,0,0.12); border-radius: 8px; padding: 10px 14px; margin: 6px 0; display: flex; justify-content: space-between; align-items: center; }
+.price-zone-label { font-size: 13px; color: #666; }
+.price-zone-value { font-size: 16px; font-weight: 500; }
+.badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 8px; margin-left: 8px; vertical-align: middle; }
+.badge-recommend { background: #E6F1FB; color: #185FA5; }
+.badge-caution { background: #FAEEDA; color: #854F0B; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.good-title { font-size: 13px; font-weight: 500; color: #3B6D11; margin-bottom: 10px; }
+.risk-title { font-size: 13px; font-weight: 500; color: #854F0B; margin-bottom: 10px; }
+.mini-item { padding: 6px 0; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+.mini-item:last-child { border-bottom: none; }
+.mini-title { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+.mini-desc { font-size: 12px; color: #666; line-height: 1.5; }
+@media (max-width: 600px) {
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr; }
+  body { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>大興路21號 · 銷售分析報告</h1>
+
+<div class="section-title">物件基本資料</div>
+<div class="card">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+    <div>
+      <div style="font-size:17px; font-weight:500; margin-bottom:4px;">大興路21號 臨路透天店住</div>
+      <div style="font-size:13px; color:#888;">桃園市蘆竹區 · 大新段 · 住宅區</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:22px; font-weight:500;">2,580<span style="font-size:14px; color:#888;"> 萬元</span></div>
+      <div style="font-size:13px; color:#888;">約 41.5 萬/坪（建坪）</div>
+    </div>
+  </div>
+  <div class="metric-grid">
+    <div class="metric"><div class="metric-label">建物坪數</div><div class="metric-value">62.25<span class="metric-unit">坪</span></div></div>
+    <div class="metric"><div class="metric-label">土地坪數</div><div class="metric-value">27.90<span class="metric-unit">坪</span></div></div>
+    <div class="metric"><div class="metric-label">格局</div><div class="metric-value" style="font-size:16px;">4房3廳3衛</div></div>
+    <div class="metric"><div class="metric-label">屋齡／樓層</div><div class="metric-value" style="font-size:16px;">15年 / 4F</div></div>
+  </div>
+  <hr class="divider">
+  <div>
+    <span class="tag tag-green">臨20米大路</span>
+    <span class="tag tag-green">前院可停車</span>
+    <span class="tag tag-green">無管理費</span>
+    <span class="tag tag-green">近大竹國小</span>
+    <span class="tag tag-blue">一樓可營業</span>
+    <span class="tag tag-blue">屋主自售</span>
+    <span class="tag tag-amber">屋齡15年</span>
+    <span class="tag tag-amber">無電梯</span>
+  </div>
+</div>
+
+<div class="section-title">市場定價分析</div>
+<div class="card">
+  <div style="font-size:13px; color:#888; margin-bottom:12px;">與市場行情比較（蘆竹區大竹生活圈）</div>
+  <div class="price-bar-wrap">
+    <div class="bar-label"><span>2020年實價登錄成交</span><span style="font-weight:500; color:#1a1a1a;">24.6 萬/坪 · 總價1,530萬</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:43%; background:#9FE1CB;"></div></div>
+  </div>
+  <div class="price-bar-wrap">
+    <div class="bar-label"><span>區域中古透天行情（2023–2025）</span><span style="font-weight:500; color:#1a1a1a;">約 28–36 萬/坪</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:60%; background:#B5D4F4;"></div></div>
+  </div>
+  <div class="price-bar-wrap">
+    <div class="bar-label"><span>大竹重劃區新案行情（近一年）</span><span style="font-weight:500; color:#1a1a1a;">約 39 萬/坪</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:72%; background:#FAC775;"></div></div>
+  </div>
+  <div class="price-bar-wrap">
+    <div class="bar-label"><span>屋主開價（臨路店住加價）</span><span style="font-weight:500; color:#1a1a1a;">41.5 萬/坪 · 總價2,580萬</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:80%; background:#F0997B;"></div></div>
+  </div>
+  <hr class="divider">
+  <div style="font-size:13px; color:#888; margin-bottom:10px;">建議定價區間</div>
+  <div class="price-zone">
+    <div><div class="price-zone-label">積極開價（談判空間充足）</div></div>
+    <div class="price-zone-value">2,580萬 <span class="badge badge-caution">屋主現價</span></div>
+  </div>
+  <div class="price-zone" style="border-color:#378ADD;">
+    <div><div class="price-zone-label">合理成交目標區間</div></div>
+    <div class="price-zone-value">2,280–2,450萬 <span class="badge badge-recommend">建議成交</span></div>
+  </div>
+  <div class="price-zone">
+    <div><div class="price-zone-label">底線保護價（含臨路店面溢價）</div></div>
+    <div class="price-zone-value">2,150萬</div>
+  </div>
+  <div style="font-size:12px; color:#aaa; margin-top:10px; line-height:1.7;">
+    ※ 2020年成交每坪僅24.58萬，2025年市場已顯著上漲；臨路商業使用性加持，溢價合理。<br>
+    ※ 議價空間約5–12%，換算約130–300萬元談判彈性。
+  </div>
+</div>
+
+<div class="section-title">優勢與風險評估</div>
+<div class="two-col">
+  <div class="card">
+    <div class="good-title">核心優勢</div>
+    <div class="mini-item"><div class="mini-title">臨20米大路</div><div class="mini-desc">店面曝光高，可開店做生意，大竹區少見稀有產品</div></div>
+    <div class="mini-item"><div class="mini-title">前院停車空間</div><div class="mini-desc">獨立車位需求高，大竹透天難得前院</div></div>
+    <div class="mini-item"><div class="mini-title">土地27.9坪</div><div class="mini-desc">土地持份高，未來改建/都更潛力大</div></div>
+    <div class="mini-item"><div class="mini-title">生活機能完善</div><div class="mini-desc">近大竹國小、全聯、市場，近國道2號</div></div>
+  </div>
+  <div class="card">
+    <div class="risk-title">風險與挑戰</div>
+    <div class="mini-item"><div class="mini-title">屋齡15年、無電梯</div><div class="mini-desc">買方議價籌碼，需預算裝修或維護費</div></div>
+    <div class="mini-item"><div class="mini-title">開價高於市場均值</div><div class="mini-desc">2,580萬對應41.5萬/坪，市場需時間消化</div></div>
+    <div class="mini-item"><div class="mini-title">信用管制影響貸款</div><div class="mini-desc">2024年起央行多輪打炒房，買方貸款成數受限</div></div>
+  </div>
+</div>
+
+<div class="section-title">銷售策略建議</div>
+<div class="card">
+  <div class="strategy-item">
+    <div class="strategy-num">1</div>
+    <div><div class="strategy-title">精準鎖定目標買方</div><div class="strategy-desc">主攻三類客群：①想開店兼住家的小企業主（美食、服務業）；②大竹在地升級換屋家庭；③工業區、南崁高科技廠商員工置產。這類客群對「前院停車＋一樓可開店」的功能性需求明確，議價較不激烈。</div></div>
+  </div>
+  <div class="strategy-item">
+    <div class="strategy-num">2</div>
+    <div><div class="strategy-title">強打「店住合一」差異化賣點</div><div class="strategy-desc">廣告標題建議改為「大竹少見！20米臨路店住一體，月租上萬輕鬆補貼房貸」。強調一樓月租金估值約3–5萬，可大幅降低持有成本，對自住兼收租的買方有強力吸引力。</div></div>
+  </div>
+  <div class="strategy-item">
+    <div class="strategy-num">3</div>
+    <div><div class="strategy-title">價格操作策略：保持彈性、設定錨點</div><div class="strategy-desc">建議以2,580萬持守1–2個月觀察市場反應；若問詢量少，可釋出「屋主有彈性」訊號，目標引導至2,350–2,450萬成交。避免快速降價造成市場觀感低落。議價上限設定10%（約258萬）為談判底線。</div></div>
+  </div>
+  <div class="strategy-item">
+    <div class="strategy-num">4</div>
+    <div><div class="strategy-title">提升物件能見度與質感</div><div class="strategy-desc">591廣告建議補拍一樓店面空間全景、前院停車實景、周邊街景。增設720度環景或短影片提升點擊率。可申請刊登「精選物件」置頂方案提高曝光。目前圖片有10張但廣告文案描述不夠精準。</div></div>
+  </div>
+  <!-- <div class="strategy-item">
+    <div class="strategy-num">5</div>
+    <div><div class="strategy-title">說服屋主委託的核心論述</div><div class="strategy-desc">屋主自售已刊登，但標注「仲介勿擾」。拜訪時應強調：①專業代理可接觸更廣泛買方；②協助審查買方資力，過濾低質詢問；③協助釐清買方貸款能力，縮短成交時間；④提供正式合約保障，降低自售法律風險。</div></div>
+  </div> -->
+</div>
+
+<div class="section-title">與實價登錄的價差分析</div>
+<div class="card">
+  <div class="highlight-box">
+    <div class="highlight-title">2020年成交 vs 2025年開價漲幅</div>
+    <div class="highlight-desc">實登成交1,530萬（24.58萬/坪）→ 現開價2,580萬（41.5萬/坪），漲幅達68.6%，高於桃園整體市場2020–2025約40–50%的漲幅，反映屋主對臨路店面的溢價預期，具一定合理性但也存在議價空間。</div>
+  </div>
+  <div class="highlight-box" style="border-left-color: #EF9F27;">
+    <div class="highlight-title">土地價值估算</div>
+    <div class="highlight-desc">蘆竹大竹區住宅用地近年每坪約60–80萬，27.9坪土地估值約1,674–2,232萬，光是土地價值已接近甚至超過底線保護價，顯示此物件在土地資產面具有相當保障。</div>
+  </div>
+  <div class="highlight-box" style="border-left-color: #1D9E75;">
+    <div class="highlight-title">一樓租金收益試算</div>
+    <div class="highlight-desc">臨20米大路的一樓店面，市場租金行情約3–5萬/月，年收租36–60萬，若以2,350萬成交，毛租金報酬率約1.5–2.6%，對自用兼收租的買方具有實質吸引力。</div>
+  </div>
+</div>
+
+<div style="margin-top:2rem; font-size:12px; color:#aaa; text-align:center;">製作日期：2026年4月 · 資料來源：591售屋網、內政部實價登錄、樂居、自由地產天下</div>
+
+</div>
+</body>
+</html>
