@@ -1,0 +1,127 @@
+== 非功能需求
+
+=== Architecture
+
+https://app.ilograph.com/new/Architecture/Application%2520Layer%252FStreamlit%2520Frontend[Architecture]
+
+* 分層設計
++
+----
+Client → API → DuckDB → Parquet
+----
+* Stateless API（支援水平擴展）
+* RESTful API（支援版本 /v1）
+
+=== Performance
+
+* API Latency
+* Query Response Time
+* Concurrency
+* Optimization
+- 使用 DuckDB 查詢 Parquet（避免 full scan）
+- 資料儲存
+. all.parquet
+. taoyuan.parquet
+. 慈文段.parquet
+* Caching
+- API Cache
+- 熱門查詢快取
+- 快取擊穿預防
+
+=== Data Management
+
+* Storage
+- Parquet
+* ETL Pipeline
+- Raw → Clean → Normalize → Feature → Parquet
+- 支援增量更新（append）
+* Data Quality
+- 排除關係人交易
+- 處理缺失值 / 異常值
+* Versioning
+- 資料版本（ex: 2026Q1）
+- 可回溯歷史資料
+
+=== Security & Compliance
+
+* Authentication
+- JWT / OAuth2
+* Authorization
+- RBAC
+* Data Protection
+- HTTPS（TLS）
+- 敏感資料遮蔽
+* Audit Log
+- 記錄查詢行為
+* Compliance
+- 確保資料可合法存放與使用
+
+
+=== Deployment
+
+* Environments
+- staging / production
+* Containerization
+- Docker
+* Infrastructure
+- EC2 / Kubernetes
+* CI/CD
+- 自動化測試與部署
+* Rolling Update
+
+=== Caching
+
+* Layer
+- API Cache
+* Strategy
+- TTL-based
+- LRU
+* Tool
+- Redis
+
+=== Maintainability
+
+* 模組化設計
+- data / service / api 分離
+* Code Quality
+- lint / typing / security
+* Documentation
+- API 文件（Swagger）
+- 資料字典
+* Testing
+- Unit Test / Integration Test
+
+=== Monitoring & Logging
+
+* Metrics
+- latency / error rate / RPS
+* Logging
+- 查詢條件 / 錯誤紀錄
+* Tools
+- Prometheus + Grafana
+
+=== Reliability
+
+* Availability
+- 99.5% uptime
+* Backup
+- Parquet 備份（S3）
+* Fault Tolerance
+- 查詢失敗 fallback
+* Disaster Recovery
+
+=== Resource Management
+
+* Connection Handling
+- API 層控制併發
+* DuckDB
+- 單 instance 長連線
+* Memory Control
+- 限制查詢筆數（LIMIT）
+- 避免大查詢造成 OOM
+
+=== 資料存取
+
+* 選項
+- Backend -> pd.read_parquet
+- Backend -> DuckDB -> parquet

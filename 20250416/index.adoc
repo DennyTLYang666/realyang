@@ -1,0 +1,24 @@
+= 2025-4-16 討論
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectnums:
+:pdf-fontsdir: D:/YouTube/fonts
+
+include::competitor.adoc[]
+
+include::data_type.adoc[]
+
+include::functional.adoc[]
+
+include::searching.adoc[]
+
+include::analysis.adoc[]
+
+include::cleansing.adoc[]
+
+include::non_function.adoc[]
+
+== UI
+
+include::todo.adoc[]

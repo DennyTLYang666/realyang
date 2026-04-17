@@ -1,0 +1,14 @@
+=== 資料清理
+
+==== 現況
+
+- 明顯有問題
+* 有2012年以前的資料，甚至有193X年的資料
+* 有2028年的資料
+- 備註中也有重要資料
+
+==== https://community.rakuya.com.tw/33517/realprice?display=community&from=realpriceTable[鴻築微風/鴻築微城市2]
+
+image::img/樂屋-實價登錄1.png[]
+image::img/樂屋-實價登錄2.png[]
+
