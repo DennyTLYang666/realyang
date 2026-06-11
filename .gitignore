@@ -1,0 +1,12 @@
+*.adoc
+*.mp3
+*.srt
+*.docx
+*.doc
+*.pdf
+*.7z
+
+data/
+video/
+tmp/
+json/
